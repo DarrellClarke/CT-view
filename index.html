@@ -1,0 +1,36 @@
+
+        <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="CT Scan Viewer"
+    />
+    <title>CT Viewer</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/@niivue/niivue@0.1.1/dist/niivue.js"></script>
+<canvas id="gl" height=480 width=640></canvas>
+<script>
+  var volumeList = [
+      {
+        url: "520.nii",
+        name: "some_image",
+        intensityMin: 0,
+        intensityMax: 100, 
+        intensityRange:[0, 100],
+        colorMap: "gray",
+        opacity: 100,
+        visible: true,
+      }
+   ]
+ var nv = new niivue.Niivue()
+ nv.attachTo('gl') // the canvas element id
+ nv.loadVolumes(volumeList)
+ nv.setSliceType(nv.sliceTypeMultiPlanar)
+</script>
+  </body>
+</html>
+        
